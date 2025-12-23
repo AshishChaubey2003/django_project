@@ -1,0 +1,10 @@
+<h1>All Horoscopes</h1>
+<a href="{% url 'horoscope_create' %}">Add Horoscope</a>
+<ul>
+{% for h in horoscopes %}
+  <li>{{ h.zodiac.name }} - {{ h.date }} - {{ h.message }}</li>
+{% empty %}
+  <li>No horoscopes available.</li>
+{% endfor %}
+</ul>
+<a href="{% url 'home' %}">Back to Home</a>

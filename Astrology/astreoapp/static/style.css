@@ -1,0 +1,202 @@
+/* ---------- Global Styles ---------- */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  color: #0f172a;
+  background: radial-gradient(1200px 600px at 10% 10%, #ffecd2 0%, rgba(255,236,210,0) 20%),
+              radial-gradient(1000px 500px at 90% 90%, #d7efff 0%, rgba(215,239,255,0) 25%),
+              linear-gradient(180deg, #fdf6fb 0%, #f0f8ff 100%);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow-x: hidden;
+}
+
+h1, h2 {
+  margin: 0 0 12px 0;
+  line-height: 1.2;
+}
+
+/* ---------- Container ---------- */
+.center, .container {
+  width: min(880px, 92%);
+  background: rgba(255,255,255,0.7);
+  border-radius: 18px;
+  padding: 36px 40px;
+  box-shadow: 0 10px 30px rgba(15,23,42,0.12), inset 0 1px 0 rgba(255,255,255,0.6);
+  -webkit-backdrop-filter: blur(6px) saturate(120%);
+  backdrop-filter: blur(6px) saturate(120%);
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+/* ---------- Headings ---------- */
+.heading {
+  font-size: 28px;
+  font-weight: 700;
+  background: linear-gradient(90deg, #ff7ab6, #7cc6ff, #9bffb3);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin-bottom: 12px;
+}
+
+.subheading {
+  color: #475569;
+  margin-bottom: 18px;
+}
+
+/* ---------- Logo ---------- */
+.logo {
+  width: 120px;
+  margin-bottom: 20px;
+}
+
+/* ---------- Form ---------- */
+form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}
+
+select, input[type="text"], input[type="date"], textarea {
+  padding: 12px 16px;
+  font-size: 16px;
+  border-radius: 12px;
+  border: 1px solid rgba(15,23,42,0.08);
+  background: linear-gradient(180deg, #ffffff, #f7fbff);
+  min-width: 220px;
+  width: 100%;
+  box-sizing: border-box;
+  box-shadow: 0 6px 18px rgba(16,24,40,0.06);
+  cursor: pointer;
+}
+
+textarea {
+  resize: vertical;
+}
+
+/* ---------- Button ---------- */
+button, .btn {
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  background-image: linear-gradient(90deg, #7c3aed 0%, #06b6d4 100%);
+  box-shadow: 0 8px 22px rgba(6,182,212,0.18);
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+button:hover, .btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 34px rgba(6,182,212,0.22);
+}
+
+/* Delete Button */
+button.delete-btn {
+  background-image: linear-gradient(90deg, #ef4444 0%, #f87171 100%);
+  box-shadow: 0 8px 22px rgba(239,68,68,0.18);
+}
+
+button.delete-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 34px rgba(239,68,68,0.22);
+}
+
+/* ---------- Card / List Item ---------- */
+.card {
+  margin-top: 22px;
+  padding: 22px 26px;
+  border-radius: 14px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.9), rgba(250,250,255,0.8));
+  border: 1px solid rgba(16,24,40,0.04);
+  box-shadow: 0 8px 30px rgba(2,6,23,0.06);
+  text-align: left;
+}
+
+.zodiac-name {
+  display: inline-block;
+  font-size: 20px;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 8px;
+}
+
+.message {
+  color: #334155;
+  line-height: 1.6;
+}
+
+a {
+  color: #6d28d9;
+  text-decoration: none;
+  font-weight: 600;
+  margin-right: 8px;
+}
+
+/* ---------- Zodiac Background Decorations ---------- */
+.zodiac-bg-wrapper {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.zodiac-sign {
+  position: absolute;
+  display: inline-block;
+  line-height: 1;
+  transform-origin: center center;
+  color: rgba(110,85,255,0.12);
+  mix-blend-mode: screen;
+  filter: blur(6px) saturate(140%);
+  user-select: none;
+  opacity: 0.85;
+  will-change: transform, opacity, filter;
+  transition: opacity 300ms ease;
+  text-shadow: 0 6px 24px rgba(99,102,241,0.06);
+  transform: translateZ(0);
+  animation-name: zodiac-rotate;
+  animation-duration: 180s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+/* Zodiac Rotation Keyframes */
+@keyframes zodiac-rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ---------- Media Queries ---------- */
+@media (max-width: 880px) {
+  .center {
+    padding: 20px;
+  }
+  select, input[type="text"], input[type="date"], textarea {
+    min-width: 160px;
+  }
+  .heading {
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 520px) {
+  .zodiac-sign {
+    display: none;
+  }
+}

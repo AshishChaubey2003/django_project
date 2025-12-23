@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Astrology App</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+
+<div class="container">
+    <!-- Logo or image -->
+    <img src="{% static 'astreoapp/astrology.png' %}" alt="Astrology Logo" class="logo">
+
+    <!-- Main heading -->
+    <h1>Welcome to My Astrology Project</h1>
+
+    <!-- Buttons for Horoscope -->
+    <a href="{% url 'horoscope_list' %}">
+        <button class="btn">View Horoscopes</button>
+    </a>
+    <a href="{% url 'horoscope_create' %}">
+        <button class="btn">Add Horoscope</button>
+    </a>
+
+    <!-- Buttons for Zodiac -->
+    <a href="{% url 'zodiac_list' %}">
+        <button class="btn">View Zodiacs</button>
+    </a>
+    <a href="{% url 'zodiac_create' %}">
+        <button class="btn">Add Zodiac</button>
+    </a>
+</div>
+
+</body>
+</html>

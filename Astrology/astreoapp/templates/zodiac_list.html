@@ -1,0 +1,11 @@
+<h1>All Zodiacs</h1>
+<a href="{% url 'zodiac_create' %}">Add Zodiac</a>
+<ul>
+{% for z in zodiacs %}
+  <li>{{ z.name }} - {{ z.description }}</li>
+{% empty %}
+  <li>No zodiacs available.</li>
+{% endfor %}
+</ul>
+<a href="{% url 'home' %}">Back to Home</a>
+

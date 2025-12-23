@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Daily Horoscope</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+
+<div class="center">
+    <!-- Logo / Astrology image -->
+    <img src="{% static 'astreoapp/astrology.png' %}" alt="Astrology Logo" class="logo">
+
+    <h1>{{ time_of_day }}</h1>
+
+    <!-- Horoscope selection -->
+    <form method="get">
+        <select name="zodiac">
+            <option value="">Select Zodiac</option>
+            {% for z in zodiacs %}
+                <option value="{{ z.name }}" {% if z.name == selected_zodiac %}selected{% endif %}>
+                    {{ z.name }}
+                </option>
+            {% endfor %}
+        </select>
+        <br><br>
+        <button type="submit">Get Horoscope</button>
+    </form>
+
+    {% if horoscope_data %}
+        <hr>
+        <h2>{{ horoscope_data.zodiac.name }}</h2>
+        <p>{{ horoscope_data.message }}</p>
+
+        <!-- Edit/Delete buttons for the displayed horoscope -->
+        <a href="{% url 'horoscope_update' horoscope_data.id %}">
+            <button>Edit</button>
+        </a>
+        <a href="{% url 'horoscope_delete' horoscope_data.id %}">
+            <button>Delete</button>
+        </a>
+    {% else %}
+        <p>Please select a zodiac sign.</p>
+    {% endif %}
+
+    <br>
+    <a href="{% url 'horoscope_create' %}">Add New Horoscope</a> |
+    <a href="{% url 'home' %}">Back to Home</a>
+</div>
+
+</body>
+</html>
+
